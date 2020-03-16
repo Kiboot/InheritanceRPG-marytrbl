@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InheritanceRPG4</string>
+    <string name="app_name">Inheritance RPG</string>
     <string-array name="HeroClass">
         <item>Class</item>
         <item>Mage</item>

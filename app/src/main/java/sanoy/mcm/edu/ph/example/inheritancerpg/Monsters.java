@@ -86,23 +86,23 @@ public class Monsters {
         return monMana;
     }
 
-    public double computeMagicDmg() {
-        double monMagicAtk = monIntelligence*0.05;
-        return monMagicAtk;
-    }
-
     public double computePhysicalDmg() {
-        double monPhysicalAtk = 20 + monAgility;
+        double monPhysicalAtk = 16 + monAgility;
         return monPhysicalAtk;
     }
 
     public double computePhysicalDef() {
-        double monPhysicalDef = 25 + monStrength;
+        double monPhysicalDef = 20 + monStrength;
         return monPhysicalDef;
     }
 
+    public double computeMagicDmg() {
+        double monMagicAtk = 16 + monIntelligence;
+        return monMagicAtk;
+    }
+
     public double computeMagicDef() {
-        double monMagicDef = monIntelligence*0.05;
+        double monMagicDef = 20 + monIntelligence;
         return monMagicDef;
     }
 }
