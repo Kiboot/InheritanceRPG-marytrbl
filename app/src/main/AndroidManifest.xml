@@ -9,19 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.MageDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.TankDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.MarksDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.SupportDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.MonsterDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.RogueDisplay"></activity>
-        <activity android:name="sanoy.mcm.edu.ph.example.inheritancerpg.MainActivity">
+
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MageDisplay" />
+        <activity android:name=".TankDisplay" />
+        <activity android:name=".MarksDisplay" />
+        <activity android:name=".SupportDisplay" />
+        <activity android:name=".MonsterDisplay" />
+        <activity android:name=".RogueDisplay" />
     </application>
 
 </manifest>

@@ -1,16 +1,38 @@
 package sanoy.mcm.edu.ph.example.inheritancerpg;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RogueDisplay extends AppCompatActivity {
 
+    ImageView archerimage,barbarianimage,knightimage,riflemanimage, assassinimage, ninjaimage, necroimage, enchanterimage, healerimage, priestimage;
+    ImageView chsimage, ignimage, thurmanimage, belphimage,catnipimage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_herodisplay);
+
+        archerimage=findViewById(R.id.archerimage);
+        barbarianimage=findViewById(R.id.barbarianimage);
+        knightimage=findViewById(R.id.knightimage);
+        riflemanimage=findViewById(R.id.riflemanimage);
+        assassinimage=findViewById(R.id.assassinimage);
+        ninjaimage=findViewById(R.id.ninjaimage);
+        necroimage=findViewById(R.id.necroimage);
+        priestimage=findViewById(R.id.priestimage);
+        healerimage=findViewById(R.id.healerimage);
+        enchanterimage=findViewById(R.id.enchanterimage);
+        chsimage = findViewById(R.id.chsimage);
+        thurmanimage = findViewById(R.id.thurmanimage);
+        ignimage = findViewById(R.id.ignimage);
+        belphimage = findViewById(R.id.belphimage);
+        catnipimage = findViewById(R.id.catnipimage);
 
         String hroclassstrng = getIntent().getStringExtra("Tank");
         String roguestrng = getIntent().getStringExtra("Assassin");
@@ -24,9 +46,7 @@ public class RogueDisplay extends AppCompatActivity {
         callLevel.setText(heroLvl);
 
         final TextView callHP1 = findViewById(R.id.currhp);
-        final TextView callHP2 = findViewById(R.id.totalhp);
         final TextView callMP1 = findViewById(R.id.currmp);
-        final TextView callMP2 = findViewById(R.id.totalmp);
 
         final TextView callStr = findViewById(R.id.strength);
         final TextView callAgi = findViewById(R.id.agility);
@@ -42,6 +62,22 @@ public class RogueDisplay extends AppCompatActivity {
 
 
         if(roguestrng.equals("Assassin")) {
+            archerimage.setVisibility(View.GONE);
+            riflemanimage.setVisibility(View.GONE);
+            barbarianimage.setVisibility(View.GONE);
+            knightimage.setVisibility(View.GONE);
+            assassinimage.setVisibility(View.VISIBLE);
+            ninjaimage.setVisibility(View.GONE);
+            necroimage.setVisibility(View.GONE);
+            priestimage.setVisibility(View.GONE);
+            healerimage.setVisibility(View.GONE);
+            enchanterimage.setVisibility(View.GONE);
+            chsimage.setVisibility(View.GONE);
+            thurmanimage.setVisibility(View.GONE);
+            ignimage.setVisibility(View.GONE);
+            belphimage.setVisibility(View.GONE);
+            catnipimage.setVisibility(View.GONE);
+
             callClass.setText(assassin.getHeroClass());
             callName.setText(assassin.getHeroName());
             callID.setText(String.valueOf(assassin.getHeroID()));
@@ -50,15 +86,13 @@ public class RogueDisplay extends AppCompatActivity {
             assassin.setHeroLevel(i);
             callLevel.setText(String.valueOf(assassin.getHeroLevel()));
 
-            assassin.heroStat(20, 34, 14);
+            assassin.heroStat(15, 35, 20);
             callStr.setText(String.valueOf((Math.round(assassin.computeStrength()))));
             callAgi.setText(String.valueOf(Math.round(assassin.computeAgility())));
             callInt.setText(String.valueOf(Math.round(assassin.computeIntelligence())));
 
             callHP1.setText(String.valueOf(Math.round(assassin.computeHP())));
-            callHP2.setText(String.valueOf(Math.round(assassin.computeHP())));
             callMP1.setText(String.valueOf(Math.round(assassin.computeMP())));
-            callMP2.setText(String.valueOf(Math.round(assassin.computeMP())));
 
             callPhysicalAtk.setText(String.valueOf(Math.round(assassin.computePhysicalDmg())));
             callMagicAtk.setText(String.valueOf(Math.round(assassin.computeMagicDmg())));
@@ -67,6 +101,22 @@ public class RogueDisplay extends AppCompatActivity {
         }
 
         else if(roguestrng.equals("Ninja")) {
+            archerimage.setVisibility(View.GONE);
+            riflemanimage.setVisibility(View.GONE);
+            barbarianimage.setVisibility(View.GONE);
+            knightimage.setVisibility(View.GONE);
+            assassinimage.setVisibility(View.GONE);
+            ninjaimage.setVisibility(View.VISIBLE);
+            necroimage.setVisibility(View.GONE);
+            priestimage.setVisibility(View.GONE);
+            healerimage.setVisibility(View.GONE);
+            enchanterimage.setVisibility(View.GONE);
+            chsimage.setVisibility(View.GONE);
+            thurmanimage.setVisibility(View.GONE);
+            ignimage.setVisibility(View.GONE);
+            belphimage.setVisibility(View.GONE);
+            catnipimage.setVisibility(View.GONE);
+
             callClass.setText(ninja.getHeroClass());
             callName.setText(ninja.getHeroName());
             callID.setText(String.valueOf(ninja.getHeroID()));
@@ -75,21 +125,24 @@ public class RogueDisplay extends AppCompatActivity {
             ninja.setHeroLevel(i);
             callLevel.setText(String.valueOf(ninja.getHeroLevel()));
 
-            ninja.heroStat(20, 34, 14);
+            ninja.heroStat(15, 40, 15);
             callStr.setText(String.valueOf((Math.round(ninja.computeStrength()))));
             callAgi.setText(String.valueOf(Math.round(ninja.computeAgility())));
             callInt.setText(String.valueOf(Math.round(ninja.computeIntelligence())));
 
             callHP1.setText(String.valueOf(Math.round(ninja.computeHP())));
-            callHP2.setText(String.valueOf(Math.round(ninja.computeHP())));
             callMP1.setText(String.valueOf(Math.round(ninja.computeMP())));
-            callMP2.setText(String.valueOf(Math.round(ninja.computeMP())));
 
             callPhysicalAtk.setText(String.valueOf(Math.round(ninja.computePhysicalDmg())));
             callMagicAtk.setText(String.valueOf(Math.round(ninja.computeMagicDmg())));
             callPhysicalDef.setText(String.valueOf(Math.round(ninja.computePhysicalDef())));
             callMagicDef.setText(String.valueOf(Math.round(ninja.computeMagicDef())));
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RogueDisplay.this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

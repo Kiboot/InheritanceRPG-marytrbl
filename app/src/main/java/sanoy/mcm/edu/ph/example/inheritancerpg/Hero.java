@@ -87,11 +87,6 @@ public class Hero {
         return heroMana;
     }
 
-    public double computeMagicDmg() {
-        double heroMagicAtk = heroIntelligence*0.07;
-        return heroMagicAtk;
-    }
-
     public double computePhysicalDmg() {
         double heroPhysicalAtk = 16 + heroAgility;
         return heroPhysicalAtk;
@@ -102,8 +97,13 @@ public class Hero {
         return heroPhysicalDef;
     }
 
+    public double computeMagicDmg() {
+        double heroMagicAtk = 16 + heroIntelligence;
+        return heroMagicAtk;
+    }
+
     public double computeMagicDef() {
-        double heroMagicDef = heroIntelligence*0.02;
+        double heroMagicDef = 20 + heroIntelligence;
         return heroMagicDef;
     }
 }

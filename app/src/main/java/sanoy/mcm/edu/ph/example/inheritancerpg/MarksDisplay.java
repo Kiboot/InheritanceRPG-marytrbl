@@ -1,16 +1,37 @@
 package sanoy.mcm.edu.ph.example.inheritancerpg;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MarksDisplay extends AppCompatActivity {
 
+    ImageView archerimage,barbarianimage,knightimage,riflemanimage, assassinimage, ninjaimage, necroimage, enchanterimage, healerimage, priestimage;
+    ImageView chsimage, ignimage, thurmanimage, belphimage,catnipimage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_herodisplay);
+
+        archerimage=findViewById(R.id.archerimage);
+        barbarianimage=findViewById(R.id.barbarianimage);
+        knightimage=findViewById(R.id.knightimage);
+        riflemanimage=findViewById(R.id.riflemanimage);
+        assassinimage=findViewById(R.id.assassinimage);
+        ninjaimage=findViewById(R.id.ninjaimage);
+        necroimage=findViewById(R.id.necroimage);
+        priestimage=findViewById(R.id.priestimage);
+        healerimage=findViewById(R.id.healerimage);
+        enchanterimage=findViewById(R.id.enchanterimage);
+        chsimage = findViewById(R.id.chsimage);
+        thurmanimage = findViewById(R.id.thurmanimage);
+        ignimage = findViewById(R.id.ignimage);
+        belphimage = findViewById(R.id.belphimage);
+        catnipimage = findViewById(R.id.catnipimage);
 
         String hroclassstrng = getIntent().getStringExtra("Marksman");
         String marksstring = getIntent().getStringExtra("Ranger");
@@ -24,9 +45,7 @@ public class MarksDisplay extends AppCompatActivity {
         callLevel.setText(heroLvl);
 
         final TextView callHP1 = findViewById(R.id.currhp);
-        final TextView callHP2 = findViewById(R.id.totalhp);
         final TextView callMP1 = findViewById(R.id.currmp);
-        final TextView callMP2 = findViewById(R.id.totalmp);
 
         final TextView callStr = findViewById(R.id.strength);
         final TextView callAgi = findViewById(R.id.agility);
@@ -42,7 +61,23 @@ public class MarksDisplay extends AppCompatActivity {
 
 
        if(marksstring.equals("Archer")) {
-            callClass.setText(archer.getHeroClass());
+           archerimage.setVisibility(View.VISIBLE);
+           riflemanimage.setVisibility(View.GONE);
+           barbarianimage.setVisibility(View.GONE);
+           knightimage.setVisibility(View.GONE);
+           assassinimage.setVisibility(View.GONE);
+           ninjaimage.setVisibility(View.GONE);
+           necroimage.setVisibility(View.GONE);
+           priestimage.setVisibility(View.GONE);
+           healerimage.setVisibility(View.GONE);
+           enchanterimage.setVisibility(View.GONE);
+           chsimage.setVisibility(View.GONE);
+           thurmanimage.setVisibility(View.GONE);
+           ignimage.setVisibility(View.GONE);
+           belphimage.setVisibility(View.GONE);
+           catnipimage.setVisibility(View.GONE);
+
+           callClass.setText(archer.getHeroClass());
             callName.setText(archer.getHeroName());
             callID.setText(String.valueOf(archer.getHeroID()));
 
@@ -50,15 +85,13 @@ public class MarksDisplay extends AppCompatActivity {
             archer.setHeroLevel(i);
             callLevel.setText(String.valueOf(archer.getHeroLevel()));
 
-            archer.heroStat(20, 34, 14);
+            archer.heroStat(20, 20, 15);
             callStr.setText(String.valueOf((Math.round(archer.computeStrength()))));
             callAgi.setText(String.valueOf(Math.round(archer.computeAgility())));
             callInt.setText(String.valueOf(Math.round(archer.computeIntelligence())));
 
             callHP1.setText(String.valueOf(Math.round(archer.computeHP())));
-            callHP2.setText(String.valueOf(Math.round(archer.computeHP())));
             callMP1.setText(String.valueOf(Math.round(archer.computeMP())));
-            callMP2.setText(String.valueOf(Math.round(archer.computeMP())));
 
             callPhysicalAtk.setText(String.valueOf(Math.round(archer.computePhysicalDmg())));
             callMagicAtk.setText(String.valueOf(Math.round(archer.computeMagicDmg())));
@@ -67,7 +100,23 @@ public class MarksDisplay extends AppCompatActivity {
         }
 
         else if(marksstring.equals("Ranger")) {
-            callClass.setText(ranger.getHeroClass());
+           archerimage.setVisibility(View.GONE);
+           riflemanimage.setVisibility(View.VISIBLE);
+           barbarianimage.setVisibility(View.GONE);
+           knightimage.setVisibility(View.GONE);
+           assassinimage.setVisibility(View.GONE);
+           ninjaimage.setVisibility(View.GONE);
+           necroimage.setVisibility(View.GONE);
+           priestimage.setVisibility(View.GONE);
+           healerimage.setVisibility(View.GONE);
+           enchanterimage.setVisibility(View.GONE);
+           chsimage.setVisibility(View.GONE);
+           thurmanimage.setVisibility(View.GONE);
+           ignimage.setVisibility(View.GONE);
+           belphimage.setVisibility(View.GONE);
+           catnipimage.setVisibility(View.GONE);
+
+           callClass.setText(ranger.getHeroClass());
             callName.setText(ranger.getHeroName());
             callID.setText(String.valueOf(ranger.getHeroID()));
 
@@ -75,21 +124,23 @@ public class MarksDisplay extends AppCompatActivity {
             ranger.setHeroLevel(i);
             callLevel.setText(String.valueOf(ranger.getHeroLevel()));
 
-            ranger.heroStat(20, 34, 14);
+            ranger.heroStat(30, 10, 15);
             callStr.setText(String.valueOf((Math.round(ranger.computeStrength()))));
             callAgi.setText(String.valueOf(Math.round(ranger.computeAgility())));
             callInt.setText(String.valueOf(Math.round(ranger.computeIntelligence())));
 
             callHP1.setText(String.valueOf(Math.round(ranger.computeHP())));
-            callHP2.setText(String.valueOf(Math.round(ranger.computeHP())));
             callMP1.setText(String.valueOf(Math.round(ranger.computeMP())));
-            callMP2.setText(String.valueOf(Math.round(ranger.computeMP())));
 
             callPhysicalAtk.setText(String.valueOf(Math.round(ranger.computePhysicalDmg())));
             callMagicAtk.setText(String.valueOf(Math.round(ranger.computeMagicDmg())));
            callPhysicalDef.setText(String.valueOf(Math.round(ranger.computePhysicalDef())));
            callMagicDef.setText(String.valueOf(Math.round(ranger.computeMagicDef())));
         }
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
 

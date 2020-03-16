@@ -4,16 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private static int SPLASH_TIME_OUT = 4000;
 
     Spinner tankspnr,magespnr,marksmanspnr,roguespnr,supportspnr;
     Spinner HeroClass, MonsterClass;
@@ -100,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
                     tankspnr.setVisibility(View.VISIBLE);
                     roguespnr.setVisibility(View.VISIBLE);
                     magespnr.setVisibility(View.VISIBLE);
-                    button.setVisibility(View.VISIBLE);
-                    heroLvl.setVisibility(View.VISIBLE);
                 }
             }
         );
@@ -135,9 +137,19 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        TextView hint = (TextView) view;
                        hroclassstrng=HeroClass.getSelectedItem().toString();
 
-                        if (hroclassstrng.equals("Tank")) {
+                        if(position == 0){
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                            marksmanspnr.setVisibility(View.GONE);
+                            supportspnr.setVisibility(View.GONE);
+                            tankspnr.setVisibility(View.GONE);
+                            roguespnr.setVisibility(View.GONE);
+                            magespnr.setVisibility(View.VISIBLE);
+                        }
+                        else if (hroclassstrng.equals("Tank")) {
                             marksmanspnr.setVisibility(View.GONE);
                             supportspnr.setVisibility(View.GONE);
                             tankspnr.setVisibility(View.VISIBLE);
@@ -152,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
                             priestimage.setVisibility(View.GONE);
                             healerimage.setVisibility(View.GONE);
                             enchanterimage.setVisibility(View.GONE);
+                            button.setVisibility(View.VISIBLE);
+                            heroLvl.setVisibility(View.VISIBLE);
                         }
                         else if (hroclassstrng.equals("Marksman")) {
                             marksmanspnr.setVisibility(View.VISIBLE);
@@ -169,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
                             priestimage.setVisibility(View.GONE);
                             healerimage.setVisibility(View.GONE);
                             enchanterimage.setVisibility(View.GONE);
+                            button.setVisibility(View.VISIBLE);
+                            heroLvl.setVisibility(View.VISIBLE);
                         }
                         else if (hroclassstrng.equals("Mage")) {
                             marksmanspnr.setVisibility(View.GONE);
@@ -186,6 +202,8 @@ public class MainActivity extends AppCompatActivity {
                             necroimage.setVisibility(View.VISIBLE);
                             healerimage.setVisibility(View.GONE);
                             enchanterimage.setVisibility(View.GONE);
+                            button.setVisibility(View.VISIBLE);
+                            heroLvl.setVisibility(View.VISIBLE);
                         }
                         else if (hroclassstrng.equals("Rogue")) {
                             marksmanspnr.setVisibility(View.GONE);
@@ -203,6 +221,8 @@ public class MainActivity extends AppCompatActivity {
                             priestimage.setVisibility(View.GONE);
                             healerimage.setVisibility(View.GONE);
                             enchanterimage.setVisibility(View.GONE);
+                            button.setVisibility(View.VISIBLE);
+                            heroLvl.setVisibility(View.VISIBLE);
                         }
                         else if (hroclassstrng.equals("Support")) {
                             marksmanspnr.setVisibility(View.GONE);
@@ -220,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
                             necroimage.setVisibility(View.GONE);
                             priestimage.setVisibility(View.GONE);
                             healerimage.setVisibility(View.VISIBLE);
+                            button.setVisibility(View.VISIBLE);
+                            heroLvl.setVisibility(View.VISIBLE);
                         }
                     }
                     @Override
@@ -232,7 +254,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         tankstrng=tankspnr.getSelectedItem().toString();
-                        if (tankstrng.equals("Barbarian")) {
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
+                        else if (tankstrng.equals("Barbarian")) {
                             barbarianimage.setVisibility(View.VISIBLE);
                             archerimage.setVisibility(View.GONE);
                             riflemanimage.setVisibility(View.GONE);
@@ -262,9 +289,10 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        if((heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
+                                        int index = tankspnr.getSelectedItemPosition();
+                                        if((index==0 || heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
                                             Toast.makeText(MainActivity.this,
-                                                    "Invalid level value",
+                                                    "Please input all fields.",
                                                     Toast.LENGTH_LONG).show();
                                         }
                                         else {
@@ -291,7 +319,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         marksstring=marksmanspnr.getSelectedItem().toString();
-                        if (marksstring.equals("Archer")) {
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
+                        else if (marksstring.equals("Archer")) {
                             archerimage.setVisibility(View.VISIBLE);
                             riflemanimage.setVisibility(View.GONE);
                             barbarianimage.setVisibility(View.GONE);
@@ -320,9 +353,10 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        if((heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
+                                        int index = marksmanspnr.getSelectedItemPosition();
+                                        if((index==0 || heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
                                             Toast.makeText(MainActivity.this,
-                                                    "Invalid level value",
+                                                    "Please input all fields.",
                                                     Toast.LENGTH_LONG).show();
                                         }
                                         else {
@@ -350,7 +384,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         magestrng=magespnr.getSelectedItem().toString();
-                        if (magestrng.equals("Priest")) {
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
+                        else if (magestrng.equals("Priest")) {
                             priestimage.setVisibility(View.VISIBLE);
                             archerimage.setVisibility(View.GONE);
                             riflemanimage.setVisibility(View.GONE);
@@ -379,9 +418,10 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        if((heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
+                                        int index = magespnr.getSelectedItemPosition();
+                                        if((index==0 || heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
                                             Toast.makeText(MainActivity.this,
-                                                    "Invalid level value",
+                                                    "Please input all fields.",
                                                     Toast.LENGTH_LONG).show();
                                         }
                                         else {
@@ -406,7 +446,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         roguestrng=roguespnr.getSelectedItem().toString();
-                        if (roguestrng.equals("Assassin")) {
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
+
+                        else if (roguestrng.equals("Assassin")) {
                             assassinimage.setVisibility(View.VISIBLE);
                             archerimage.setVisibility(View.GONE);
                             riflemanimage.setVisibility(View.GONE);
@@ -435,9 +481,10 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        if((heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
+                                        int index = roguespnr.getSelectedItemPosition();
+                                        if((index==0 || heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
                                             Toast.makeText(MainActivity.this,
-                                                    "Invalid level value",
+                                                    "Please input all fields.",
                                                     Toast.LENGTH_LONG).show();
                                         }
                                         else {
@@ -462,7 +509,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         supportstrng=supportspnr.getSelectedItem().toString();
-                        if (supportstrng.equals("Enchanter")) {
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
+
+                        else if (supportstrng.equals("Enchanter")) {
                             enchanterimage.setVisibility(View.VISIBLE);
                             archerimage.setVisibility(View.GONE);
                             riflemanimage.setVisibility(View.GONE);
@@ -491,9 +544,10 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        if((heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
+                                        int index = supportspnr.getSelectedItemPosition();
+                                        if((index==0 || heroLvl.getText().toString()==null || heroLvl.getText().toString().trim().equals(""))) {
                                             Toast.makeText(MainActivity.this,
-                                                    "Invalid level value",
+                                                    "Please input all fields.",
                                                     Toast.LENGTH_LONG).show();
                                         }
                                         else {
@@ -519,8 +573,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         monclassstrng=MonsterClass.getSelectedItem().toString();
+                        TextView hint = (TextView) view;
+                        if(position == 0) {
+                            hint.setTextColor(Color.parseColor("#4e463f"));
+                            ((TextView) parent.getChildAt(0)).setTextSize(18);
+                        }
 
-                        if  (monclassstrng.equals("Corrupted Human Soul")){
+                        else if  (monclassstrng.equals("Corrupted Soul")){
                             chsimage.setVisibility(View.VISIBLE);
                             thurmanimage.setVisibility(View.GONE);
                             ignimage.setVisibility(View.GONE);
@@ -562,15 +621,65 @@ public class MainActivity extends AppCompatActivity {
                                 new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        Intent intent = new Intent(MainActivity.this, MonsterDisplay.class);
-                                        intent.putExtra("Monster",monclassstrng);
-                                        startActivity(intent);
+                                        int index = MonsterClass.getSelectedItemPosition();
+                                        if((index==0)) {
+                                            Toast.makeText(MainActivity.this,
+                                                    "Please input all fields.",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+                                        else {
+                                            Intent intent = new Intent(MainActivity.this, MonsterDisplay.class);
+                                            intent.putExtra("Monster",monclassstrng);
+                                            startActivity(intent);
+                                        }
                                     }
                                 }
                         );
                     }
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                }
+        );
+    }
+    @Override
+    public void onBackPressed() {
+        herobtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        herobtn.setVisibility(View.GONE);
+                        monsterbtn.setVisibility(View.GONE);
+                        HeroClass.setVisibility(View.VISIBLE);
+                        marksmanspnr.setVisibility(View.VISIBLE);
+                        supportspnr.setVisibility(View.VISIBLE);
+                        tankspnr.setVisibility(View.VISIBLE);
+                        roguespnr.setVisibility(View.VISIBLE);
+                        magespnr.setVisibility(View.VISIBLE);
+                    }
+                }
+        );
+
+        monsterbtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ConstraintLayout background = (ConstraintLayout) findViewById(R.id.layout);
+                        background.setBackgroundResource(R.drawable.denbg);
+                        herobtn.setVisibility(View.GONE);
+                        monsterbtn.setVisibility(View.GONE);
+                        MonsterClass.setVisibility(View.VISIBLE);
+                        marksmanspnr.setVisibility(View.GONE);
+                        supportspnr.setVisibility(View.GONE);
+                        tankspnr.setVisibility(View.GONE);
+                        roguespnr.setVisibility(View.GONE);
+                        magespnr.setVisibility(View.GONE);
+                        button2.setVisibility(View.VISIBLE);
+                        chsimage.setVisibility(View.GONE);
+                        thurmanimage.setVisibility(View.GONE);
+                        ignimage.setVisibility(View.GONE);
+                        belphimage.setVisibility(View.GONE);
+                        catnipimage.setVisibility(View.GONE);
                     }
                 }
         );
